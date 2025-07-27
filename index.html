@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="name"></div>
+    Welcome to kinbech
+</body>
+<script>
+
+    let obj = {
+        sellername: "Hemant Xakka",
+        title: "This is the title",
+        des: "This is descrpition",
+        img: ["Imhg.jpg", "img2.png"],
+        contact: {
+            email: "hemantgandu@xakka.com",
+            phone: 98696969696,
+            location: "Xakkanagar"
+        },
+        price: 5,
+        isnegotiable: true
+    }
+
+
+
+    // document.getElementById("name").innerHTML = obj.img[0];
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "/src/index.php/newproduct");
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    let data = JSON.stringify(obj);
+
+    xhr.send(data);
+
+    xhr.onload = (ev) => {
+        let resp=  JSON.parse(ev.target.response);
+
+        console.log(resp);
+    };
+
+
+
+
+</script>
+
+</html>
