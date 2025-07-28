@@ -48,6 +48,16 @@ if ($method=="GET" && strpos($url,"/viewproduct")) {
 
 
 
+if (isset($_GET['id'])) {
+    $postid = $_GET['id'];
+    // getdata("post",$postid);
+    echo "i received data";
+
+
+
+}
+
+
 
 
 //this is this

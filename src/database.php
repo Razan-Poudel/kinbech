@@ -86,7 +86,7 @@ function getdata($searchtype,$postid){
 
     }else{
     $table="postings";
-    $postid=1753513808;
+    // $postid=1753513808;
     $sql="SELECT * from ".$table." where postid = ".$postid;
 
     $result = $GLOBALS['conn']->query($sql);
@@ -97,7 +97,8 @@ function getdata($searchtype,$postid){
     if ($result->num_rows > 0) {
         $myarr=[];
 
-        while($row = $result->fetch_assoc()) {
+        $row = $result->fetch_assoc();
+            $info =new stdClass();
             $img='/img/'.$row['img'];
             $info->postid=$row['postid'];
             $info->sellerid=$row['sellerid'];
@@ -109,9 +110,9 @@ function getdata($searchtype,$postid){
             $info->isnegotiable=$row['isnegotiable'];
             
             $myarr[]=$info;
-        }
+        
 
-        echo json_encode($info);
+        return $info;
 
     } else {
         echo "0";

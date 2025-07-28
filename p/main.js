@@ -44,6 +44,9 @@ function renderProductCard(product) {
   const card = document.createElement('div');
   card.className = 'card';
   console.log(product);
+  card.id=`${product.postid}`;
+
+
 //new line added
   // card.href = `product-detail.html?title=${encodeURIComponent(product.title)}&description=${encodeURIComponent(product.description)}&price=${product.price}&image=${encodeURIComponent(product.images[0])}`;
 //upto here
@@ -56,16 +59,34 @@ function renderProductCard(product) {
     </div>
     <div class="card-content">
       <h3>${product.title}</h3>
-      <p class="description">${product.description}</p>
+      <p class="description">${product.des}</p>
       <div class="price">NPR ${product.price}</div>
     </div>
   `;
+  
   productList.appendChild(card);
+
+
+  const cards = document.querySelectorAll('.card');
+
+cards.forEach(element => {
+  
+  //event listener for each card
+element.addEventListener("click",()=>{
+//i stands for id of the next data
+  let i=element.id;
+  window.location.href = `/src/product-detail.php?id=${i}`;
+
+
+});
+
+
+
+});
 }
 
 // Render initial products
 // products.forEach(renderProductCard);
-
 
 
 

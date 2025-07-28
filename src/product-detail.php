@@ -1,3 +1,15 @@
+<?php
+    require 'database.php';
+
+$id = isset($_GET['id']) ? $_GET['id'] : null;
+$resp=getdata('post',$id);
+?>
+
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +36,24 @@
       width: 400px;
       max-width: 90%;
       transition: transform 0.3s ease;
+      margin-top:100px;
     }
+
+
+    .header {
+        position: absolute;
+        top:0px;
+        width: 100%;
+        margin: 100px;
+        margin-top:0px;
+  background-color: #9d712c;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+
+
 
     .product-card:hover {
       transform: scale(1.02);
@@ -60,7 +89,7 @@
 
     .contact-box {
       background: #f2f9ff;
-      border-left: 4px solid #007BFF;
+      border-left: 4px solid #9d712c;
       padding: 1rem;
       border-radius: 10px;
     }
@@ -73,27 +102,40 @@
 
     .contact-box p span {
       font-weight: bold;
-      color: #007BFF;
+      color: #9d712c;
     }
   </style>
 </head>
 <body>
+
+
+<header class="header">
+    <h1>KINBECH – College Market</h1>
+    <p>Buy & Sell Goods, Easily</p>
+  </header>
+
+
   <div class="product-card">
     <div class="product-image" >
       <!-- <img src="img/demo1.jpg" alt="product Image"> -->
-    <img src="../img/demo1.jpg" alt="product Image" style="height:100%; width:100%; object-fit:cover; border-radius:15px;">
+    <img src=<?php echo $resp->img[0]   ?> alt="product Image" style="height:100%; width:100%; object-fit:cover; border-radius:15px;">
     </div>
-    <div class="product-title">Rajan </div>
+    <div class="product-title"><?php    echo $resp->title;  ?> </div>
     <div class="product-description">
-      This is the short descrpition about our product
+       <?php    echo $resp->des;  ?>
     </div>
-    <div class="price">Price: NPR 500</div>
+    <div class="price">Price: NPR <?php    echo $resp->price;  ?></div>
     <div class="contact-box">
-      <p><span>Name:</span> Rajan Shrestha</p>
-      <p><span>Email:</span> rajan@example.com</p>
-      <p><span>Phone:</span> +977-9800000000</p>
+        <b>Contact Seller to negotiate for best price: </b>
+      <p><span>Email:</span>  <?php    echo json_decode($resp->contact)->email;  ?></p>
+      <p><span>Phone:</span>   <?php    echo json_decode($resp->contact)->phone;  ?></p>
+      <p><span>Location:</span>       <?php    echo json_decode($resp->contact)->location;  ?>
+      </p>
     </div>
   </div>
 </body>
-<script src="product-detail.js"></script>
+<script>
+
+    console.log(<?php  echo json_encode($resp); ?>);
+</script>
 </html>
