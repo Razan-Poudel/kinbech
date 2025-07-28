@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KIN KIN - College Market</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>KIN KIN – College Market</h1>
+    <p>Buy & Sell Goods, Easily</p>
+  </header>
+
+  <!-- Product List -->
+  <main class="grid-container" id="product-list">
+    <!-- JavaScript will insert product cards here -->
+  </main>
+
+  <hr style="margin: 40px 0;">
+
+  <!-- Add Product Section -->
+  <h2 style="text-align: center;">Add a New Product</h2>
+  <p style="text-align: center;">Click the button below to add a new product.</p>
+
+  <button onclick="toggleForm()" style="display: block; margin: 0 auto; padding: 10px 20px;" class="create-product">Create Product</button>
+
+  <section class="add-product">
+    <form action="../src/index.php" id="uploadform" enctype="multipart/form-data" >
+
+    <div id="create-form" style="display: none; margin-top: 20px;">
+      <input type="text" name="title" id="title" placeholder="Enter title" style="width:370px"><br><br>
+      <textarea id="description" name="description" placeholder="Enter description" style="width:387px; height: 94px"></textarea><br><br>
+      <input type="number" id="price"  name="price" placeholder="Enter price" style="width:370px"><br><br>
+
+      <label for="images">Upload Images:</label>
+      <input type="file" id="images" name="image"  multiple><br><br>
+
+      <button type="submit" onclick="createProduct()" style="width:fit-content; margin: 0 auto; display: block;">Add Product</button>
+    </div>
+  </form>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2025 KIN KIN. All rights reserved.
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -14,14 +14,14 @@
 <script>
 
     let obj = {
-        sellername: "Hemant Xakka",
+        sellerid: "Hemant Xakka",
         title: "This is the title",
         des: "This is descrpition",
         img: ["Imhg.jpg", "img2.png"],
         contact: {
-            email: "hemantgandu@xakka.com",
+            email: "razan@6969.com",
             phone: 98696969696,
-            location: "Xakkanagar"
+            location: "btl"
         },
         price: 5,
         isnegotiable: true
@@ -32,7 +32,7 @@
     // document.getElementById("name").innerHTML = obj.img[0];
 
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "/src/index.php/newproduct");
+    xhr.open("GET", "/src/index.php/explore");
     xhr.setRequestHeader("Content-Type", "application/json");
 
     let data = JSON.stringify(obj);

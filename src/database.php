@@ -41,25 +41,31 @@ $currenttable="DEMOTABLE"; ///just a demo table for the sql testing
 function getdata($searchtype,$postid){
 
     if($searchtype=="explore"){
+
+
         $table="postings";
         $sql="SELECT * from ".$table;
     
         $result = $GLOBALS['conn']->query($sql);
     
-        $info =new stdClass();
         
     
         if ($result->num_rows > 0) {
     
             $myarr=[];
             while($row = $result->fetch_assoc()) {
-                
+
+             $info =new stdClass();
+
+              $img='/img/'.$row['img'];
+
+
                 $info->postid=$row['postid'];
                 $info->sellerid=$row['sellerid'];
                 $info->title=$row['title'];
                 $info->des=$row['description'];
                 $info->price=$row['price'];
-                $info->img=$row['img'];
+                $info->img[]=$img;
                 $info->contact=$row['contact'];
                 $info->isnegotiable=$row['isnegotiable'];
                 
@@ -92,15 +98,17 @@ function getdata($searchtype,$postid){
         $myarr=[];
 
         while($row = $result->fetch_assoc()) {
-            $info->postid=$postid;
+            $img='/img/'.$row['img'];
+            $info->postid=$row['postid'];
             $info->sellerid=$row['sellerid'];
             $info->title=$row['title'];
             $info->des=$row['description'];
             $info->price=$row['price'];
-            $info->img=$row['img'];
+            $info->img[]=$img;
             $info->contact=$row['contact'];
             $info->isnegotiable=$row['isnegotiable'];
-            $myarr=$info;
+            
+            $myarr[]=$info;
         }
 
         echo json_encode($info);
@@ -151,12 +159,12 @@ function insertdata($data){
 
 
 
-  // if ($GLOBALS['conn']->query($sql)) {
-  //     echo "Data inserted successfully.";
-  // } else {
-  //     echo "Error inserting data" . $GLOBALS['conn']->error;
+  if ($GLOBALS['conn']->query($sql)) {
+      return "Data inserted successfully.";
+  } else {
+      return "Error inserting data" . $GLOBALS['conn']->error;
 
-// }
+}
 
 
 
