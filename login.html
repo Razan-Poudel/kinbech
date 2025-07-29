@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div id="main">
+        <div id="pictureside">
+          <button id="backbutton">&#x2B05; Back</button>
+        </div>
+        <div id="formside">
+          <!-- <div id="logo"><img src="" alt="Logo" /></div> -->
+
+          <h2>Welcome to Kinbech</h2>
+
+          <!-- <button id="google"><a href="#">Sign in with google</a></button> -->
+
+          <!-- <fieldset id="or">
+            <legend>or</legend>
+          </fieldset> -->
+
+          <fieldset class="inputs">
+            <legend>Enter email</legend>
+            <input type="text" id="id" placeholder="seller125@gmail.com" />
+          </fieldset>
+
+          <fieldset class="inputs pass">
+            <legend>Location</legend>
+
+            <div id="eye">
+              <input
+                type="text"
+                id="location"
+                placeholder="Enter your Location"
+              />
+            </div>
+          </fieldset>
+
+
+          <fieldset class="inputs pass">
+            <legend>Enter your number</legend>
+
+            <div id="eye">
+              <input
+                type="tel"
+                id="phone"
+                placeholder="Enter your Phone Number"
+              />
+            </div>
+          </fieldset>
+
+
+
+          <input type="checkbox" id="remember" /><label for="remember"
+            >Remember me</label
+          >
+
+          <a href="#" id="forgotpassword">Forgot Password?</a>
+
+          <button id="signin" type="submit">Sign in</button>
+          <span id="donthaveacc"
+            >Dont have an account?<strong
+              ><a href="#">Sign Up</a></strong
+            ></span
+          >
+          <div id="copyright">
+            Copyright &#169; 2025, KinBech. All Rights Reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    // const togglePassword = document.querySelector("#togglePassword");
+    // const password = document.querySelector("#password");
+    // togglePassword.addEventListener("click", function (e) {
+    //   // toggle the type attribute
+    //   const type =
+    //     password.getAttribute("type") === "password" ? "text" : "password";
+    //   password.setAttribute("type", type);
+    //   // toggle the eye / eye slash icon
+    //   this.classList.toggle("bi-eye");
+    // });
+
+
+    let signin= document.querySelector("#signin");
+    signin.addEventListener("click", ()=>{
+
+
+      let email=document.getElementById("id").value;
+      let location=document.getElementById("location").value;
+      let phone=document.getElementById("phone").value;
+     window.location.href="/p/main.html"
+      // console.log(email,location,phone)
+      let obj={
+        'email':email,
+        'phone': parseInt(phone),
+        'location':location
+      }
+
+      console.log(obj);
+
+
+
+
+
+
+    })
+
+
+
+  </script>
+</html>
