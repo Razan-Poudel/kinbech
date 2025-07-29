@@ -105,6 +105,12 @@
         'location':location
       }
 
+      let date = new Date();
+      let sellerid = date.getSeconds();
+
+
+      localStorage.setItem("contact",JSON.stringify(obj));
+      localStorage.setItem("sellerid",JSON.stringify(sellerid));
       console.log(obj);
 
 
